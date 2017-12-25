@@ -1,0 +1,3 @@
+[submodule "cerbero"]
+	path = cerbero
+	url = https://github.com/GStreamer/cerbero.git
