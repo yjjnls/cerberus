@@ -1,0 +1,8 @@
+/cache
+/build
+.vscode
+/MinGW
+/releases
+/scripts/wms
+/projects
+*.py[cod]

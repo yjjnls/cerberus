@@ -1,0 +1,23 @@
+# -*- Mode: Python -*- vi:si:et:sw=4:sts=4:ts=4:syntax=python
+#from cerbero.tools.libtool import LibtoolLibrary
+
+import platform
+class Recipe(recipe.Recipe):
+    name = 'openwebrtc-lite'
+    version = '0.4.0'
+
+    remotes = {'origin': 'https://github.com/yjjnls/openwebrtc-lite.git'}
+    commit = '55629cc19d5824a10d3196f3a2e16b49521aeae9'
+
+    btype = BuildType.AUTOCMAKE
+    
+
+    deps = ['openwebrtc-gst-plugins','libusrsctp']
+    
+    if 'Linux' == platform.system():
+        deps.append('pulseaudio')
+    files_libs = ['libopenwebrtc_gst-lite','libopenwebrtc-lite-0.3']
+    files_devel = ['include/owr', 'lib/pkgconfig/openwebrtc-lite-0.3.pc',
+                   'lib/pkgconfig/openwebrtc-gst-lite-0.3.pc']
+
+
