@@ -24,10 +24,6 @@ from cerbero.build.oven import Oven
 from cerbero.utils import _, N_, ArgparseArgument
 
 from cerbero.utils import messages as m
-from hacks.cpm.utils import SHA1
-from hacks.cpm.buildsystem import BuildSystem
-from hacks.cpm.packager import  Description,Component,PkgFile
-from hacks.cpm.packager import  Pack as MakePackage
 from hacks.build.abstract import Abstract 
 
 class AbstractCommand(Command):

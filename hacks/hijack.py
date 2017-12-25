@@ -91,7 +91,7 @@ def _load_defaults(self):
     _originConfig_load_defaults(self)
     self.interactive = False
     if platform.system() == 'Windows':
-        self.toolchain_prefix = 'c:/MinGW/toolchain'
+        self.toolchain_prefix = 'c:/MinGW/w64'
     
 
     CERBERUS_CACHED_SOURCES = os.environ.get('CERBERUS_CACHED_SOURCES')
