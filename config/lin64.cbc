@@ -7,8 +7,8 @@ target_arch = Architecture.X86_64
 platform=Platform.LINUX
 target_platform=Platform.LINUX
 
-prefix='/usr/local/cerberus/x86_64'
-build_tools_prefix = '/usr/local/cerberus/build-tools'
+prefix='/usr/local/cerbero/x86_64'
+build_tools_prefix = '/usr/local/cerbero/build-tools'
 
 
 
