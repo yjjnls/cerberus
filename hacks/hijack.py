@@ -109,6 +109,15 @@ def _default_home_dir(self):
     else:
         p = os.path.expanduser('~/cerbero')
     return os.path.abspath(p)
+def _relative_path(self, path):
+    if not self.uninstalled:
+        p = os.path.join(self.data_dir, path)
+    else:
+        p = os.path.join(os.path.dirname(__file__), '..', path)
+    return os.path.abspath(p)
+    
 cerbero.config.Config._default_home_dir = _default_home_dir
+cerbero.config.Config._relative_path = _relative_path
+
 cerbero.config.Config.load_defaults = _load_defaults
 
