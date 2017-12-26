@@ -134,16 +134,13 @@ class Abstract(object):
             'version':sdk.version,
             'platform':self.config.target_platform,
             'arch':self.config.target_arch,
-            'recipes':[],
+            'recipes':{},
             'commit': self.commit()
         }
 
         for rname in self.recipes_of_sdk(name):
             recipe = self.recipe(rname)
-            desc['recipes'].append({
-                'name':rname,
-                'version': recipe.version            
-            })
+            desc['recipes'][rname]=version
 
         tarball = DistTarball(self.config,sdk,self.store)
 

@@ -77,7 +77,7 @@ class Installer(Command):
             path = os.path.join(prefix,name + '.yaml')
 
             f = open(path,'w')
-            yaml.dump(desc,f)
+            yaml.dump(desc,f,default_flow_style=False)
             f.close()
 
         return
