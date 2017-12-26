@@ -103,5 +103,12 @@ def _load_defaults(self):
     self.recipes_dir = os.path.join( rootd ,'recipes' )
     self.packages_dir = os.path.join( rootd ,'packages' )
 
+def _default_home_dir(self):
+    if self.uninstalled:
+        p = os.path.join(os.path.dirname(__file__), '..', 'build')
+    else:
+        p = os.path.expanduser('~/cerbero')
+    return os.path.abspath(p)
+cerbero.config.Config._default_home_dir = _default_home_dir
 cerbero.config.Config.load_defaults = _load_defaults
 
