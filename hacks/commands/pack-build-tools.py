@@ -21,20 +21,17 @@ import os
 from cerbero.commands import Command, register_command
 from cerbero.build.cookbook import CookBook
 from cerbero.build.oven import Oven
-from cerbero.utils import _, N_, ArgparseArgument
+from cerbero.utils import _, N_, ArgparseArgument,shell
 
 from cerbero.utils import messages as m
 from hacks.build.abstract import Abstract 
 
-class AbstractCommand(Command):
+class TarballBuildTools(Command):
     doc = N_('Generate abstract for package')
-    name = 'abstract'
+    name = 'tar-build-tools'
 
     def __init__(self, force=None, no_deps=None):
             args = [
-                ArgparseArgument('name', nargs='*',
-                    help=_('name of the package to generate abstract')),
-
                 ArgparseArgument('--output-dir', type=str,
                     default='.',
                     help=_('directory of package stored'))
@@ -43,21 +40,20 @@ class AbstractCommand(Command):
             Command.__init__(self, args)
 
     def run(self, config, args):
-        import datetime
 
-        start = datetime.datetime.now()
+        name = 'build-tools'
 
         abst = Abstract( config )
-        for name in args.name:
-            desc = abst.dump( name, args.output_dir)
-            filename = abst.fullname(name) + '.yaml'
-            path = os.path.join(args.output_dir,filename)
-            import yaml
-            f = open( path,'w')
-            yaml.dump( desc, f ,default_flow_style=False)
-            f.close()
+        filename = abst.fullname(name) + '.tar.bz2'
+        path = os.path.join(args.output_dir,filename)
+        import tarfile
+
+        tar = tarfile.open(path, "w:bz2")
+        for name in os.listdir(config.build_tools_prefix):
+            tar.add(os.path.join(config.build_tools_prefix,name),name)
+        tar.close()
 
    
 
 
-register_command(AbstractCommand)
+register_command( TarballBuildTools )
