@@ -46,8 +46,6 @@ class Abstract(object):
 
     def sdk(self,name):
         for pkg in self.store.get_packages_list():
-            print pkg.name,isinstance (pkg,SDKPackage),'@',pkg.name == name
-
             if isinstance (pkg,SDKPackage) and pkg.name == name:
                 return pkg
         return None
@@ -140,7 +138,7 @@ class Abstract(object):
 
         for rname in self.recipes_of_sdk(name):
             recipe = self.recipe(rname)
-            desc['recipes'][rname]=version
+            desc['recipes'][rname]=recipe.version
 
         tarball = DistTarball(self.config,sdk,self.store)
 
