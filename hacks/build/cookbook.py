@@ -122,7 +122,7 @@ class CookBook (CookBookBase):
         return recipes
 
     def recipe_version_from_installation(self,name):
-        instd = os.path.join(self._config.prefix,'.inst')
+        instd = os.path.join(self._config.prefix)
         if not os.path.exists(instd):
             return None
         import glob
