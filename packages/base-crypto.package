@@ -11,6 +11,7 @@ class Package(custom.GStreamer, package.Package):
     deps = ['base-system-1.0']
 
     files = ['gmp:libs', 'gnutls:libs:libs_extra:lang',
+	     'openssl:libs',
              'libtasn1:libs', 'nettle:libs']
 
     platform_files_devel = {

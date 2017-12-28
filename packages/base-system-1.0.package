@@ -30,4 +30,4 @@ class Package(custom.GStreamer, package.Package):
 
     def prepare(self):
         if self.config.variants.gi:
-            self.files.append('gobject-introspection:libs:typelibs')
+            self.files.append('gobject-introspection:libs:typelibs:bins:gi')
