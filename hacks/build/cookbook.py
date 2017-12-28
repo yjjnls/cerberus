@@ -97,30 +97,6 @@ class CookBook (CookBookBase):
 
         return self.recipes[name]
 
-    def _load_recipes_from_dir(self, repo):
-        recipes = {}
-        recipes_files = shell.find_files('*/*%s' % self.RECIPE_EXT, repo)
-        recipes_files.extend(shell.find_files('*/*/*%s' % self.RECIPE_EXT, repo))
-        try:
-            custom = None
-            m_path = os.path.join(repo, 'custom.py')
-            if os.path.exists(m_path):
-                custom = imp.load_source('custom', m_path)
-        except Exception:
-            custom = None
-        for f in recipes_files:
-            # Try to load the custom.py module located in the recipes dir
-            # which can contain private classes to extend cerbero's recipes
-            # and reuse them in our private repository
-            try:
-                recipe = self._load_recipe_from_file(f, custom)
-            except RecipeNotFoundError:
-                m.warning(_("Could not found a valid recipe in %s") % f)
-            if recipe is None:
-                continue
-            recipes[recipe.name] = recipe
-        return recipes
-
     def recipe_version_from_installation(self,name):
         instd = os.path.join(self._config.prefix)
         if not os.path.exists(instd):

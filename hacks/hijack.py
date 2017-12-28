@@ -96,7 +96,7 @@ def _load_defaults(self):
 
     CERBERUS_CACHED_SOURCES = os.environ.get('CERBERUS_CACHED_SOURCES')
     if CERBERUS_CACHED_SOURCES and os.path.isdir(CERBERUS_CACHED_SOURCES):
-        self.config.cached_sources = CERBERUS_CACHED_SOURCES
+        self.cached_sources = CERBERUS_CACHED_SOURCES
 
     rootd = os.path.abspath( os.path.dirname(__file__) + '/..')
 

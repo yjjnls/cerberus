@@ -9,6 +9,9 @@ function cerbero(){
     
 }
 
+[ ! -d releases ] && mkdir releases
+export CERBERUS_CACHED_SOURCES='z:/share/cerbero/cerbero-1.12.3/sources'
+
 __config__='config/win64.cbc'
 cerbero clear build-tools builds
 
@@ -56,5 +59,5 @@ cerbero install build-tools --repo releases
 cerbero install base --repo releases
 cerbero install gstreamer --repo releases
 cerbero install ribbon --repo releases
-cerbero package wms --tarball --output-dir releases
-cerbero abstract wms --output-dir releases
+#cerbero package wms --tarball --output-dir releases
+#cerbero abstract wms --output-dir releases
