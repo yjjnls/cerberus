@@ -4,18 +4,32 @@
 import platform
 class Recipe(recipe.Recipe):
     name = 'openwebrtc-lite'
-    version = '0.4.0'
+    version = '0.3.2'
 
-    remotes = {'origin': 'https://github.com/yjjnls/openwebrtc-lite.git'}
-    commit = '55629cc19d5824a10d3196f3a2e16b49521aeae9'
+    remotes = {'origin': 'https://github.com/Mingyiz/openwebrtc.git'}
+
+    commit = 'aa86ac723e802a79eea3b692aba1fd3737af7fd8'
 
     btype = BuildType.AUTOCMAKE
     
+   
+    # Dependencies used in the dynamic (shared) build of OWRTC
+    _dynamic_deps = ['libnice', 'gstreamer-1.0', 'gst-plugins-base-1.0',
+                     'gst-plugins-good-1.0', 'gst-plugins-bad-1.0',
+                     'openwebrtc-gst-plugins']
 
-    deps = ['openwebrtc-gst-plugins','libusrsctp']
-    
-    if 'Linux' == platform.system():
-        deps.append('pulseaudio')
+    # Dependencies used only in the static build of OWRTC
+    _static_deps = _dynamic_deps + ['openwebrtc-girepository']
+    deps = ['gettext', 'glib', 'libffi', 'gtk-doc-lite'] + \
+           _dynamic_deps
+
+    platform_deps = {Platform.Windows: ['json-glib', 'libsoup'],
+                     Platform.DARWIN: ['json-glib', 'libsoup'],
+                     Platform.LINUX: ['json-glib', 'libsoup','pulseaudio'],
+                     Platform.IOS: _static_deps,
+                     Platform.ANDROID: _static_deps + ['gnustl']}
+
+
     files_libs = ['libopenwebrtc_gst-lite','libopenwebrtc-lite-0.3']
     files_devel = ['include/owr', 'lib/pkgconfig/openwebrtc-lite-0.3.pc',
                    'lib/pkgconfig/openwebrtc-gst-lite-0.3.pc']

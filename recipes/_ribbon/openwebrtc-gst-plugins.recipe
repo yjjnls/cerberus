@@ -39,8 +39,8 @@ class Recipe(recipe.Recipe):
     #    autoreconf = True
     #    autoreconf_sh = 'mkdir -p m4 && autoreconf -fiv'
     #    configure_options = ''
-
-    deps = ['libusrsctp']
+    deps = ['gettext', 'gstreamer-1.0', 'gst-plugins-base-1.0',
+            'orc', 'libusrsctp']
     patches = ['openwebrtc-gst-plugins/%s/0001-CMake-for-commit.patch'%commit,
 	'openwebrtc-gst-plugins/%s/0001-remove-GST_EXPORT-for-gst-sctp.patch'%commit
 	
