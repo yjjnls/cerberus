@@ -23,9 +23,9 @@ from cerbero.build.cookbook import CookBook
 from cerbero.build.oven import Oven
 from cerbero.utils import _, N_, ArgparseArgument
 
-class Build(Command):
+class Make(Command):
     doc = N_('Build a recipe')
-    name = 'cpm-build'
+    name = 'make'
 
     def __init__(self):
         args = [
@@ -92,4 +92,4 @@ class Build(Command):
 
 
 
-register_command(Build)
+register_command(Make)

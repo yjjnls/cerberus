@@ -10,3 +10,5 @@ prefix = 'c:/cerbero/x86_64'
 build_tools_prefix = 'c:/cerbero/build-tools'
 
 cache_file = '%s_%s-d.cache'%(platform,arch)
+
+build_type = 'debug'
