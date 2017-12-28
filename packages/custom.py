@@ -10,3 +10,10 @@ class GStreamer:
     vendor = 'GStreamer Project'
     licenses = [License.LGPL]
     org = 'org.freedesktop.gstreamer'
+
+	
+class Ribbon:
+
+    url = ""
+    version = '0.4.0'
+    	

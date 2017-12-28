@@ -1,0 +1,14 @@
+# -*- Mode: Python -*- vi:si:et:sw=4:sts=4:ts=4:syntax=python
+
+
+class SDKPackage(custom.GStreamer, package.SDKPackage):
+
+    name = "build-tools"
+    shortdesc = "GStreamer build tools"
+    longdesc = "GStreamer build tools"
+    title = "GStreamer 1.0 base system"
+    sdk_version = '1.0'
+    ignore_package_prefix = True
+	version = '1.12.3'
+    packages =[ ]
+
