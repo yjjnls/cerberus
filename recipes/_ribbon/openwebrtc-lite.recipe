@@ -23,7 +23,7 @@ class Recipe(recipe.Recipe):
     deps = ['gettext', 'glib', 'libffi', 'gtk-doc-lite'] + \
            _dynamic_deps
 
-    platform_deps = {Platform.Windows: ['json-glib', 'libsoup'],
+    platform_deps = {Platform.WINDOWS: ['json-glib', 'libsoup'],
                      Platform.DARWIN: ['json-glib', 'libsoup'],
                      Platform.LINUX: ['json-glib', 'libsoup','pulseaudio'],
                      Platform.IOS: _static_deps,
