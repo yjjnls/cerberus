@@ -50,7 +50,7 @@ class Clear(Command):
                 path = config.prefix
 
             elif name == 'cache_file':
-                path = config.cache_file
+                path = os.path.join(config.home_dir, config.cache_file)
 
             elif name == 'sources':
                 path = config.sources
