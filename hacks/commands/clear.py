@@ -26,6 +26,8 @@ from cerbero.utils import _, N_, ArgparseArgument
 from cerbero.utils import messages as m
 from hacks.build.abstract import Abstract 
 
+import shutil
+
 class Clear(Command):
     doc = N_('Clear install install files.')
     name = 'clear'
@@ -40,17 +42,26 @@ class Clear(Command):
 
     def run(self, config, args):
         for name in args.name:
-            d = None
-            if name == 'build-tools':
-                d = config.build_tools_prefix
+            path = None
+            if name == 'build_tools_prefix':
+                path = config.build_tools_prefix
 
-            if name == 'builds':
-                d = config.prefix
+            elif name == 'prefix':
+                path = config.prefix
 
-            print 'remove %s at %s'%(name,d)
-            if os.path.exists(d):
-                import shutil
-                shutil.rmtree(d)
+            elif name == 'cache_file':
+                path = config.cache_file:
+
+            elif name == 'sources':
+                path = config.sources:
+                
+                
+
+            print 'remove %s at %s'%(name,path)
+            if os.path.isdir(path):
+                shutil.rmtree(path)
+            elif os.path.isfile(path):
+                os.remove( path )
 
 
    

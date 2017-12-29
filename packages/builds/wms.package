@@ -1,0 +1,18 @@
+# -*- Mode: Python -*- vi:si:et:sw=4:sts=4:ts=4:syntax=python
+
+
+class SDKPackage(custom.WMS, package.SDKPackage):
+
+    name = "wms"
+    shortdesc = "Web-based Media System"
+    longdesc = "Web-based Media System"
+    title = "Web-based Media System"
+    sdk_version = '0.2'
+    uuid = ''
+    ignore_package_prefix = True
+    packages =[
+               # (name, required, selected)
+               ('wms-base', True, True),
+
+              ]
+			  

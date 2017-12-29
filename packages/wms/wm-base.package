@@ -1,0 +1,13 @@
+# vi:si:et:sw=4:sts=4:ts=4:syntax=python
+# -*- Mode: Python -*-
+
+
+class Package(custom.WMS, package.Package):
+
+    name = 'wms-base'
+    shortdesc = 'WMS base system'
+    longdesc = 'WMS base system'
+
+    files = [
+        'wsf:libs','webstreamer:bins'
+    ]
