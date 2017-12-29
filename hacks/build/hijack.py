@@ -43,3 +43,14 @@ if platform.system() == "Windows":
         return devel_libs
     FilesProvider._search_devel_libraries = _search_devel_libraries
     
+from hacks.build.oven import Oven
+
+_old_cook_recipe = Oven._cook_recipe
+def _cook_recipe(self, recipe, count, total):
+    if not self.cookbook.recipe_needs_build(recipe.name) and \
+            not self.force and \
+            self.cookbook._installed_recipes.has_key(recipe.name):
+
+        m.build_step(count, total, recipe.name, _("already installed"))
+        return
+    _old_cook_recipe(self, recipe, count, total)
