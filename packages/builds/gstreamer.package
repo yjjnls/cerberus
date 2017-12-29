@@ -12,6 +12,8 @@ class SDKPackage(custom.GStreamer, package.SDKPackage):
     ignore_package_prefix = True
     packages =[
                # (name, required, selected)
+               ('gstreamer-1.0-core', True, True),
+               ('gstreamer-1.0-system', False, True),
                ('gstreamer-1.0-playback', False, True),
                ('gstreamer-1.0-codecs', False, True),
                ('gstreamer-1.0-effects', False, True),
