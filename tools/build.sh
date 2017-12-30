@@ -8,8 +8,12 @@ function cerbero(){
 
     
 }
-git config --global user.name "Mingyi Zhang"
-git config --global user.email "mingyi.z@outlook.com"
+
+email=$(git config --global user.name)
+if [[ $? -ne 0 || -z $email ] ]; then
+    git config --global user.name "Mingyi Zhang"
+    git config --global user.email "zhangmingyi@kedacom.com"
+fi
 
 [ ! -d releases ] && mkdir releases
 export CERBERUS_CACHED_SOURCES='z:/share/cerbero/cerbero-1.12.3/sources'
