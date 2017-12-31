@@ -1,7 +1,6 @@
 #__config__='config/win64.cbc'
 function cerbero(){
-    [[ "$1" == 'package' ]] && ping github.com -n 5
-
+    
    ./cerbero-uninstalled -c ${__config__} $@
    if [ $? -ne 0 ]; then
       echo "Failed run command ./cerbero-uninstalled -c ${__config__} $@"
