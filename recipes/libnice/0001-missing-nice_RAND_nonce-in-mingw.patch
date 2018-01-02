@@ -1,0 +1,29 @@
+From cb07eebc81f059909620d294d58f2ab07de74c5b Mon Sep 17 00:00:00 2001
+From: Mingyi Zhang <zhangmingyi@kedacom.com>
+Date: Tue, 2 Jan 2018 15:01:29 +0800
+Subject: [PATCH] missing nice_RAND_nonce in mingw
+
+---
+ stun/rand.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/stun/rand.c b/stun/rand.c
+index 3ac6741..9db0367 100644
+--- a/stun/rand.c
++++ b/stun/rand.c
+@@ -66,6 +66,12 @@ void nice_RAND_bytes (uint8_t *dst, int len)
+ 
+   CryptReleaseContext(hCryptProv,0);
+ }
++
++void nice_RAND_nonce (uint8_t *dst, int len)
++{
++  nice_RAND_bytes(dst, len );
++}
++
+ #else
+ 
+ #include <sys/types.h>
+-- 
+2.15.0.windows.1
+

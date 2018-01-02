@@ -35,7 +35,7 @@ from cerbero.utils import _, system_info, to_unixpath
 from cerbero.utils import messages as m
 from cerbero.errors import FatalError
 
-
+PLATFORM = system_info()[0]
 
 def cmd(cmd, cmd_dir='.', fail=True, verbose=False):
     '''
@@ -125,3 +125,39 @@ def cache(url , cache_dir='.', md5=None, NotCheck=False):
         real : %s
         '''%(url,sha1,val)
     return path    
+
+
+
+def enter_build_environment(platform, arch, sourcedir=None):
+    '''
+    Enters to a new shell with the build environment
+    '''
+    BASHRC =  '''
+if [ -e ~/.bashrc ]; then
+source ~/.bashrc
+fi
+PS1='\[\033[01;32m\][cerbero-%s-%s]\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+'''
+
+    bashrc = tempfile.NamedTemporaryFile()
+    bashrc.write(BASHRC % (platform, arch))
+    bashrc.flush()
+
+    if sourcedir:
+        os.chdir(sourcedir)
+
+
+    if PLATFORM == Platform.WINDOWS:
+        # $MINGW_PREFIX/home/username
+        msys = os.path.join(os.path.dirname(__file__),
+                            '..', '..', 'bash.bat')
+        subprocess.check_call('%s '%msys)
+    else:
+        shell = os.environ.get('SHELL', '/bin/bash')
+        if os.system("%s --rcfile %s -c echo 'test' > /dev/null 2>&1" % (shell, bashrc.name)) == 0:
+            os.execlp(shell, shell, '--rcfile', bashrc.name)
+        else:
+            os.environ["CERBERO_ENV"] = "[cerbero-%s-%s]" % (platform, arch)
+            os.execlp(shell, shell)
+
+    bashrc.close()

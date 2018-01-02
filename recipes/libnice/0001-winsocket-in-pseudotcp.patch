@@ -1,0 +1,24 @@
+From 9e02e6095e6ffc2a95b98cf8d3a0f6878837f0bc Mon Sep 17 00:00:00 2001
+From: Mingyi Zhang <zhangmingyi@kedacom.com>
+Date: Tue, 2 Jan 2018 15:13:39 +0800
+Subject: [PATCH] winsocket in pseudotcp
+
+---
+ agent/pseudotcp.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/agent/pseudotcp.c b/agent/pseudotcp.c
+index d57808e..3270eeb 100644
+--- a/agent/pseudotcp.c
++++ b/agent/pseudotcp.c
+@@ -73,6 +73,7 @@
+ #ifndef G_OS_WIN32
+ #  include <arpa/inet.h>
+ #endif
++#include <winsock.h>
+ 
+ #include "pseudotcp.h"
+ #include "agent-priv.h"
+-- 
+2.15.0.windows.1
+

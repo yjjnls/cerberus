@@ -15,3 +15,5 @@ shell.download = hijacked_download
 
 import hacks.utils.shell
 shell.cmd = hacks.utils.shell.cmd
+
+shell.enter_build_environment = hacks.utils.shell.enter_build_environment
