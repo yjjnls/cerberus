@@ -2,20 +2,21 @@
 
 class Recipe(recipe.Recipe):
     name = 'libnice'
-    version = '0.1.13'
-    stype = SourceType.TARBALL
-    url = 'http://nice.freedesktop.org/releases/%(name)s-%(version)s.tar.gz'
+    version = '0.1.14-1'
+    stype = SourceType.GIT
+    remotes = { 'origin' : 'https://github.com/libnice/libnice.git'     }
+    commit = 'fb2f1f77a31baa91968fc81c205f980b6913f403'
     licenses = [License.LGPLv2_1Plus, License.MPLv1_1]
     configure_options = ' --enable-static --enable-shared --with-gstreamer \
             --without-gstreamer-0.10 --enable-compile-warnings=maximum \
-            --disable-gtk-doc'
+            --disable-gtk-doc --disable-gtk-doc-html'
     deps = ['glib', 'gtk-doc-lite', 'gstreamer-1.0']
     autoreconf = True
     patches = [
-        "libnice/0001-agent-Remove-unnecessary-NULL-check.patch",
-        "libnice/0002-Do-not-update-a-remote-candidate-s-type.patch",
-        "libnice/0003-Do-not-compare-scope-for-IPv6-address-when-scope-is-.patch",
-        "libnice/0004-Removing-no-op-assignment.patch",
+	    "libnice/0001-fix-EMSGSIZE-error-in-windows.patch",
+        "libnice/0001-winsocket-in-pseudotcp.patch",
+        "libnice/0001-missing-nice_RAND_nonce-in-mingw.patch",
+        "libnice/0001-missing-gtk-doc.patch",
         "libnice/0001-nicesrc-spin-the-agent-mainloop-in-a-separate-thread.patch"
     ]
 
