@@ -95,10 +95,11 @@ def cache(url , cache_dir='.', md5=None, NotCheck=False):
     
 
     basename = os.path.basename(url)
-    if not os.path.exists(self.cache_dir):                
-        os.makedirs(self.cache_dir)
+    if not os.path.exists(cache_dir):
+        print 'cacd ', cache_dir
+        os.makedirs(cache_dir)
 
-    path = os.path.join(self.cache_dir,basename)
+    path = os.path.join(cache_dir,basename)
     if os.path.isfile(path):
         
         if NotCheck:
@@ -113,7 +114,9 @@ def cache(url , cache_dir='.', md5=None, NotCheck=False):
     failed remove %s,when we want update from %s
     '''%(path,url)
 
-    shell.download( url, path)
+    import cerbero.utils.shell
+
+    cerbero.utils.shell.download( url, path)
     if md5:
         val = MD5(path)
         assert val == md5,'''

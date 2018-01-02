@@ -45,7 +45,7 @@ class Installer(Command):
                 help=_('respsitory of the objects stored')),
                 
 
-            ArgparseArgument('--cache-dir', type=str, default='',
+            ArgparseArgument('--cache-dir', type=str, default='.',
                 help=_('directory where dowanlod packaged to store'))
 
             ]
