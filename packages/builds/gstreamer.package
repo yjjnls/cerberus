@@ -8,6 +8,7 @@ class SDKPackage(custom.GStreamer, package.SDKPackage):
     longdesc = "GStreamer 1.0"
     title = "GStreamer 1.0"
     sdk_version = '1.0'
+	version = '1.12.3-1'
 
     ignore_package_prefix = True
     packages =[

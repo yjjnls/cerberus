@@ -14,9 +14,7 @@ class GStreamer:
 	
 class Ribbon:
     url = ""
-    version = '0.4.1'
 
 class WMS:
     url = ""
-    version = '0.3.1'
     	
