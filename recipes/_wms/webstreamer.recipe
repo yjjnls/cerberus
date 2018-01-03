@@ -13,12 +13,12 @@ def username():
 
 class Recipe(recipe.Recipe):
     name = 'webstreamer'
-    version = '0.2.0'
+    version = '0.5.0'
     stype = SourceType.GIT
     btype = BuildType.AUTOCMAKE
     remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/WebStreamer'%username()
      }
-    commit = 'origin/release' #'e6fabda0acc596738fc2bc2eca4c02446e0c8751'
+    commit = 'v%s'%version
 
     #remotes = { 'origin' : 'https://github.com/kedacomresearch/WebStreamer.git'
     # }
