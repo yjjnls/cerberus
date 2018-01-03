@@ -4,11 +4,11 @@
 import platform
 class Recipe(recipe.Recipe):
     name = 'openwebrtc-lite'
-    version = '0.3.2'
+    version = '0.3.3'
 
     remotes = {'origin': 'https://github.com/Mingyiz/openwebrtc.git'}
 
-    commit = 'aa86ac723e802a79eea3b692aba1fd3737af7fd8'
+    commit = 'v%s'%version
 
     btype = BuildType.AUTOCMAKE
     
