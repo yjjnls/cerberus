@@ -1,0 +1,33 @@
+From 74f89820bd9abeaa5defdf279bcbf376e6f0f1de Mon Sep 17 00:00:00 2001
+From: Mingyi Zhang <zhangmingyi@kedacom.com>
+Date: Wed, 3 Jan 2018 10:42:21 +0800
+Subject: [PATCH] EMSGSIZE and ETIMEDOUT missing in windows
+
+---
+ agent/pseudotcp.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/agent/pseudotcp.c b/agent/pseudotcp.c
+index d57808e..455e723 100644
+--- a/agent/pseudotcp.c
++++ b/agent/pseudotcp.c
+@@ -77,6 +77,16 @@
+ #include "pseudotcp.h"
+ #include "agent-priv.h"
+ 
++#ifdef G_OS_WIN32
++	#ifndef EMSGSIZE
++		#define EMSGSIZE    (10000+40)
++	#endif
++
++	#ifndef ETIMEDOUT
++		#define ETIMEDOUT   (10000+60)
++	#endif
++#endif
++
+ struct _PseudoTcpSocketClass {
+     GObjectClass parent_class;
+ };
+-- 
+2.15.0.windows.1
+

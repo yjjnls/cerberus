@@ -13,8 +13,7 @@ class Recipe(recipe.Recipe):
     deps = ['glib', 'gtk-doc-lite', 'gstreamer-1.0']
     autoreconf = True
     patches = [
-	    "libnice/0001-fix-EMSGSIZE-error-in-windows.patch",
-        "libnice/0001-winsocket-in-pseudotcp.patch",
+        "libnice/0001-EMSGSIZE-and-ETIMEDOUT-missing-in-windows.patch",
         "libnice/0001-missing-nice_RAND_nonce-in-mingw.patch",
         "libnice/0001-missing-gtk-doc.patch",
         "libnice/0001-nicesrc-spin-the-agent-mainloop-in-a-separate-thread.patch"
