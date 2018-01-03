@@ -1,0 +1,41 @@
+# -*- Mode: Python -*- vi:si:et:sw=4:sts=4:ts=4:syntax=python
+#from cerbero.tools.libtool import LibtoolLibrary
+from cerbero.utils import shell
+import shutil
+import subprocess
+import os
+from cerbero.utils import shell, to_unixpath
+
+def username():
+    output = subprocess.check_output(['git','config','user.email'])
+    parts = output.strip().split('@')
+    
+    #assert len(parts)==2 and parts[1]=='kedacom.com','git config user.email %s illegal'%parts
+    return parts[0]
+
+
+class Recipe(recipe.Recipe):
+    name = 'wms'
+    version = '0.3.1'
+    stype = SourceType.GIT
+    btype = BuildType.CUSTOM
+    remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/WebMediaService'%username()
+     }
+    # commit = 'v%s'%version #'c2c03603a045d05c8b410d8228bc26d5391b2330'
+	commit = 'origin/tmp/wms-0.3.1'
+    files_nodejs  = ['node-app']
+
+	def install(self):
+	  prefix = self.config.prefix
+	  install_dir = os.path.join(prefix,'node-app', self.name)
+	  install_dir = os.path.abspath(install_dir)
+	  if not os.path.exists(install_dir):
+	      os.makedirs(install_dir)
+
+	  build_dir = self.build_dir
+	   
+	  filesToCp = os.path.join(build_dir, 'wms/*')
+
+	  cpcmd = "cp -rf %s %s" % (filesToCp, install_dir)
+	  shell.call(cpcmd)
+

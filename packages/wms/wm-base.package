@@ -9,5 +9,5 @@ class Package(custom.WMS, package.Package):
     longdesc = 'WMS base system'
 
     files = [
-        'wsf:libs','webstreamer:bins'
+        'wsf:libs','webstreamer:bins','wms'
     ]
