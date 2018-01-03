@@ -7,8 +7,8 @@ import tarfile
 import bz2
 
 __BB__='BB1-2'
-#__repo__='http://172.16.0.119/WMS/mirrors/cerbero'
-__repo__='D:/cerberus/releases'
+__repo__='http://172.16.0.119/WMS/mirrors/cerbero'
+#__repo__='D:/cerberus/releases'
 __instd__='c:/wms/%s'%__BB__
 __cached__='%s/download'%__instd__
 
@@ -92,7 +92,7 @@ def cache(url , cache_dir='.', md5=None, NotCheck=False):
 
 def unbz2(filename,output_dir):
     archive = tarfile.open(filename,'r:bz2')
-    archive.debug=1
+    #archive.debug=1
     archive.extractall(output_dir)
     archive.close()
 
@@ -109,10 +109,8 @@ release = yaml.load( open(release_file) )
 for name,build in release['package'].viewitems():
     #description filename
 
-    print build
-    print '=========='
     durl = os.path.join(__repo__,__BB__,build['desc'])
-    print durl
+    print 'installing <%s> from %s'%(build,durl)
     dfile = cache(durl)
     desc = yaml.load(open(dfile))
 
@@ -124,8 +122,8 @@ for name,build in release['package'].viewitems():
             tarball = cache(url,__cached__,md5=prop['MD5Sum'] )
             unbz2(tarball,__instd__)
 
-    print 'install node_modules'
-    path = os.path.join( __repo__,'mode_modules.tar.bz2 ' )       
+    path = os.path.join( __repo__,'mode_modules.tar.bz2 ' )
+    print 'install node_modules from',path
     node_modules = cache(path,__cached__,'22324205ca951eec8a68ac76179752ef' )
     unbz2(node_modules,os.path.join(__instd__,'node-app','wms')) 
 print '''
