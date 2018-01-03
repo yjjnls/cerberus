@@ -14,12 +14,12 @@ def username():
 
 class Recipe(recipe.Recipe):
     name = 'wsf'
-    version = '0.2.0'
+    version = '0.2.1'
     stype = SourceType.GIT
     btype = BuildType.AUTOCMAKE
     remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/wsf'%username()
      }
-    commit = 'origin/release' #'e6fabda0acc596738fc2bc2eca4c02446e0c8751'
+    commit = 'v%s'%version #'e6fabda0acc596738fc2bc2eca4c02446e0c8751'
 
     #remotes = { 'origin' : 'https://github.com/kedacomresearch/wsf.git'
     # }
