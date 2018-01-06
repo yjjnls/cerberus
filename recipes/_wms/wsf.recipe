@@ -14,17 +14,17 @@ def username():
 
 class Recipe(recipe.Recipe):
     name = 'wsf'
-    version = '0.2.0'
+    version = '0.2.1'
     stype = SourceType.GIT
     btype = BuildType.AUTOCMAKE
     remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/wsf'%username()
      }
-    commit = 'v%s'%version #'e6fabda0acc596738fc2bc2eca4c02446e0c8751'
+    #commit = 'v%s'%version 
 
     #remotes = { 'origin' : 'https://github.com/kedacomresearch/wsf.git'
     # }
     #commit = 'v%s'%version
-    #commit = 'origin/master'
+    commit = '27ed278231e7a63e7a8c9fbef3d7072e9b323e9c'
 
     files_libs  = ['libwsf-transport','libwsf-actor']
     files_devel = ['include/wsf', 'lib/pkgconfig/wsf-actor.pc','lib/pkgconfig/wsf-transport.pc']
