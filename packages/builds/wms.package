@@ -10,7 +10,7 @@ class SDKPackage(custom.WMS, package.SDKPackage):
     sdk_version = '0.2'
     uuid = ''
     ignore_package_prefix = True
-    version = '0.3.2'
+    version = '0.3.3'
 
     packages =[
                # (name, required, selected)
