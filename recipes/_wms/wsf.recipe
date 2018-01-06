@@ -14,7 +14,7 @@ def username():
 
 class Recipe(recipe.Recipe):
     name = 'wsf'
-    version = '0.2.1'
+    version = '0.2.0'
     stype = SourceType.GIT
     btype = BuildType.AUTOCMAKE
     remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/wsf'%username()
