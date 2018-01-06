@@ -16,12 +16,13 @@ def username():
 
 class Recipe(recipe.Recipe):
     name = 'wms'
-    version = '0.3.2'
+    version = '0.3.3'
     stype = SourceType.GIT
     btype = BuildType.CUSTOM
     remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/WebMediaService'%username()
      }
-    commit = 'v%s'%version #'c2c03603a045d05c8b410d8228bc26d5391b2330'
+    commit = 'v%s'%version 
+    commit = 'bb6e15bce600ad623f2f4c08c18923a7fba84e5c' #0.3.3
 	
     files_nodejs  = ['node-app']
 
