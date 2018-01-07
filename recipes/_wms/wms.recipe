@@ -22,7 +22,7 @@ class Recipe(recipe.Recipe):
     remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/WebMediaService'%username()
      }
     commit = 'v%s'%version 
-    commit = 'bb6e15bce600ad623f2f4c08c18923a7fba84e5c' #0.3.3
+    
 	
     files_nodejs  = ['node-app']
 
