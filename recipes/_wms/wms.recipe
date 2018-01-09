@@ -16,7 +16,7 @@ def username():
 
 class Recipe(recipe.Recipe):
     name = 'wms'
-    version = '0.3.3'
+    version = '0.3.5'
     stype = SourceType.GIT
     btype = BuildType.CUSTOM
     remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/WebMediaService'%username()
