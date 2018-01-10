@@ -13,7 +13,7 @@ def username():
 
 class Recipe(recipe.Recipe):
     name = 'webstreamer'
-    version = '0.5.2'
+    version = '0.5.3'
     stype = SourceType.GIT
     btype = BuildType.AUTOCMAKE
     remotes = { 'origin' : 'ssh://%s@172.16.6.169:29418/WMS/WebStreamer'%username()
