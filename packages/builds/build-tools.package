@@ -9,6 +9,6 @@ class SDKPackage(custom.GStreamer, package.SDKPackage):
     title = "GStreamer 1.0 base system"
     sdk_version = '1.0'
     ignore_package_prefix = True
-	version = '1.12.3'
+	version = '1.12.4'
     packages =[ ]
 

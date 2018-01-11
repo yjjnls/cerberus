@@ -13,8 +13,8 @@ from cerbero.utils import shell, to_unixpath
 class GStreamerBase:
 
     licenses = [License.LGPLv2Plus]
-    version = '1.12.3'
-    commit = '1.12.3'
+    version = '1.12.4'
+    commit = '1.12.4'
 
 class GStreamer(GStreamerBase, recipe.Recipe):
 
@@ -160,10 +160,3 @@ def list_gstreamer_1_0_plugins_by_category(config):
                         e = e[3:-8]
                     plugins[cat_name].append(e)
         return plugins
-
-
-class Ribbon:
-
-    version = '0.9.0'
-    commit = '0.9'
-

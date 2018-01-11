@@ -13,7 +13,7 @@ class Recipe(recipe.Recipe):
     autoreconf_sh = 'gtkdocize && autoreconf -vfi'
     deps = ['glib']
 
-    files_bins = ['g-ir-annotation-tool', 'g-ir-compiler',  'g-ir-generate', 'g-ir-scanner']#'g-ir-doc-tool',
+    files_bins = ['g-ir-annotation-tool', 'g-ir-compiler', 'g-ir-doc-tool', 'g-ir-generate', 'g-ir-scanner']
     files_libs = ['libgirepository-1.0']
     files_typelibs = ['cairo-1.0',
         'DBus-1.0',
@@ -61,9 +61,6 @@ class Recipe(recipe.Recipe):
         'lib/gobject-introspection/giscanner/transformer.py',
         'lib/gobject-introspection/giscanner/utils.py',
         'lib/gobject-introspection/giscanner/xmlwriter.py'
-        
-        ,'lib/gobject-introspection/giscanner/ccompiler.py'
-        ,'lib/gobject-introspection/giscanner/msvccompiler.py'
     ]
     files_devel = [
         'include/gobject-introspection-1.0',

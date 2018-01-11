@@ -10,7 +10,7 @@ class SDKPackage(custom.Ribbon, package.SDKPackage):
     sdk_version = '0.1'
     uuid = ''
     ignore_package_prefix = True
-    version = '0.4.3'
+    version = '0.5.0'
 
     packages =[
                # (name, required, selected)
